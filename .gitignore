@@ -1,0 +1,12 @@
+# Ignore pychache
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore environments
+venv/
+.venv
+
+# Ignore system files
+.DS_Store
+Thumbs.db
