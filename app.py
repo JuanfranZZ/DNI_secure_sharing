@@ -7,7 +7,7 @@ from pathlib import Path
 import json
 import ast
 
-from PIL import Image, ImageDraw
+from PIL import Image
 
 from src.editor import procesar_imagen as procesar_imagen
 from src.utils.escaneo import ejecutar_escanner_interactivo
@@ -132,7 +132,7 @@ elif st.session_state.watermark_color=="Rojo":
 
 # --- 3. CUERPO PRINCIPAL (ENTRADA DE DATOS) ---
 st.title("📸 DNI editor")
-st.write("Sube una foto o usa la cámara de tu móvil.")
+st.write("Sube una foto o usa la cámara.")
 
 # --- 4. LÓGICA DE PROCESAMIENTO ---
 
@@ -143,7 +143,7 @@ if st.session_state.vista == 'inicio' and not crear_template:
     tab1, tab2 = st.tabs(["📸 Cámara", "📁 Archivo/Galería"])
 
     with tab1:
-        foto_camara = st.camera_input("Tomar foto desde el móvil")
+        foto_camara = st.camera_input("Tomar foto desde cámara", )
         if foto_camara:
             file_bytes = np.asarray(bytearray(foto_camara.read()), dtype=np.uint8)
             st.session_state.imagen_original = cv2.imdecode(file_bytes, 1)
