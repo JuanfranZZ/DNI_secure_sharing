@@ -32,7 +32,7 @@ def procesar_imagen(image, development=None, black_n_white=True, solid_white=Fal
         # load template rectangles
         get_rectangles = template['rectangles']
         # image with solid rectangles
-        image = draw_rectangle_on_image(image, get_rectangles, color=((255,255,255) if solid_black else (0,0,0)), thickness=-1)
+        image = draw_rectangle_on_image(image, get_rectangles, color=((255,255,255) if solid_white else (0,0,0)), thickness=-1)
         
     elif gaussian:
         # load template rectangles
@@ -41,11 +41,11 @@ def procesar_imagen(image, development=None, black_n_white=True, solid_white=Fal
         image = apply_gaussian_blur_to_rectangle(image, get_rectangles)
     
     if watermark:
-        if color is None:
-            if solid_black:
-                color = (0,0,0) # black
-            elif solid_white:
-                color = (255,255,255) # white
+        if color is None: # Auto
+            if solid_white:
+                color = (0,0,0) # letters in black
+            elif solid_black:
+                color = (255,255,255) # letters in white
         else:
             color = color
         # image with watermark
