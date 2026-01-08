@@ -1,7 +1,7 @@
 import streamlit as st
 import cv2
 import io
-import os
+import os, time
 import numpy as np
 from pathlib import Path
 import json
@@ -164,7 +164,10 @@ if st.session_state.vista == 'inicio' and not crear_template:
         # 2.2 Crear una versión pequeña solo para la interfaz de clics
         img_cv2_rgb = cv2.resize(cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB), (WIDTH_DISPLAY, new_h))
         st.image(img_cv2_rgb, caption="Imagen seleccionada")
-        #st.rerun()
+        if st.button("Confirmar imagen"):
+            st.success("Imagen confirmada")
+            time.sleep(0.5)
+            st.rerun()
             
 elif st.session_state.vista == 'recorte' and not crear_template:
 
