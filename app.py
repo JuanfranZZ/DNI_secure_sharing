@@ -164,7 +164,7 @@ if st.session_state.vista == 'inicio' and not crear_template:
         # 2.2 Crear una versión pequeña solo para la interfaz de clics
         img_cv2_rgb = cv2.resize(cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB), (WIDTH_DISPLAY, new_h))
         st.image(img_cv2_rgb, caption="Imagen seleccionada")
-        st.rerun()
+        #st.rerun()
             
 elif st.session_state.vista == 'recorte' and not crear_template:
 
