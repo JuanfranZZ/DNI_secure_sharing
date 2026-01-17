@@ -17,6 +17,26 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# ---------- CARGAR MANIFEST y SERVICE WORKER -------------
+# Inyectar metadatos y el script del Service Worker
+st.markdown(
+    """
+    <link rel="manifest" href="/manifest.json">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            console.log('ServiceWorker registrado con éxito');
+          }, function(err) {
+            console.log('ServiceWorker error: ', err);
+          });
+        });
+      }
+    </script>
+    """,
+    unsafe_allow_html=True,
+)
+
 # --- 1. CONFIGURACIÓN Y ESTILOS ---
 st.set_page_config(
     page_title="Editor DNI",
